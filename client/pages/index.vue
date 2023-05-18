@@ -15,12 +15,16 @@
 </template>
 
 <script setup lang='ts'>
-// const config = useRuntimeConfig()
-// const { data } = await useFetch(config.public.API_BASE_URL)
+const config = useRuntimeConfig()
 
 const url = ref('')
 
 const handleClick = (): void => {
-  console.log(url.value)
+  useFetch(config.public.API_BASE_URL, {
+    method: 'POST',
+    body: {
+      url: url.value
+    }
+  })
 }
 </script>
