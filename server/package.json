@@ -21,6 +21,8 @@
     "build:release": "pnpm run clean && tsc -p tsconfig.release.json"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "tslib": "~2.5"
   }

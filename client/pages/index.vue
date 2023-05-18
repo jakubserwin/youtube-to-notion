@@ -1,7 +1,7 @@
 <template>
-  <div class="text-xl">
+  <pre>
     {{ data }}
-  </div>
+  </pre>
 </template>
 
 <script setup lang='ts'>

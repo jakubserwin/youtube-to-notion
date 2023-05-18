@@ -20,7 +20,5 @@
     "nuxt": "^3.4.3",
     "typescript": "^5.0.4"
   },
-  "dependencies": {
-    "@notionhq/client": "^2.2.5"
-  }
+  "dependencies": {}
 }
