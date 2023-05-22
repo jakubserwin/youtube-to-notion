@@ -3,6 +3,7 @@ import { Client } from '@notionhq/client'
 import cors from 'cors'
 
 import config from './config.js'
+import { YoutubeResponseBody } from './types/index.js'
 
 const app = express()
 
@@ -14,6 +15,7 @@ const notion = new Client({
 })
 
 // TODO
+// - TypeScript config from this boilerplate ? XD
 // - eslint not working in server
 // - shared eslint config in root dir (?)
 // - shared .gitignore (?)
@@ -25,7 +27,22 @@ export const createPage = async (req: Request, res: Response) => {
     const match = url.match(regex)
     const videoId = match[1]
 
-    const response = await notion.pages.create({
+    const youtubeURL = `https://www.googleapis.com/youtube/v3/videos?${new URLSearchParams(
+      {
+        key: config.youtubeApiKey,
+        type: 'video',
+        part: 'snippet',
+        id: videoId,
+      }
+    )}`
+
+    const youtubeApiResponse = await fetch(youtubeURL)
+
+    const data = (await youtubeApiResponse.json()) as YoutubeResponseBody
+    const video = data.items[0].snippet
+    console.log(video)
+
+    await notion.pages.create({
       parent: {
         database_id: config.notionDatabaseId,
       },
@@ -33,34 +50,32 @@ export const createPage = async (req: Request, res: Response) => {
         title: [
           {
             text: {
-              content: 'Hello from Nuxt client',
+              content: video.title,
               link: null,
             },
           },
         ],
+        URL: url
       },
       children: [
         {
           video: {
             external: {
               url,
-            }
-          }
+            },
+          },
         },
         {
           image: {
             external: {
-              url: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-            }
-          }
-        }
-      ]
+              url: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+            },
+          },
+        },
+      ],
     })
 
-    // TODO -> proper response
-    res.status(200).json({
-      response,
-    })
+    res.status(201)
   } catch (error) {
     res.status(400)
   }
