@@ -20,5 +20,7 @@
     "nuxt": "^3.4.3",
     "typescript": "^5.0.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "zod": "^3.21.4"
+  }
 }
