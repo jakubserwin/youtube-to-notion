@@ -14,12 +14,6 @@ const notion = new Client({
   auth: config.notionToken,
 })
 
-// TODO
-// - TypeScript config from this boilerplate ? XD
-// - eslint not working in server
-// - shared eslint config in root dir (?)
-// - shared .gitignore (?)
-// - play with pnpm workspaces (?)
 export const createPage = async (req: Request, res: Response) => {
   try {
     const { url } = req.body as { url: string }
@@ -40,7 +34,6 @@ export const createPage = async (req: Request, res: Response) => {
 
     const data = (await youtubeApiResponse.json()) as YoutubeResponseBody
     const video = data.items[0].snippet
-    console.log(video)
 
     await notion.pages.create({
       parent: {
