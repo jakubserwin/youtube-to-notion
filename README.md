@@ -43,5 +43,7 @@ pnpm dev
 Start the development server on `http://localhost:8080`
 
 ```bash
+pnpm build
+
 pnpm start
 ```
