@@ -1,15 +1,15 @@
 <template>
   <div class="flex h-screen items-center justify-center">
-    <div class="h-1/3 w-1/3 rounded-xl border-2 border-pink-600 bg-white p-16">
-      <h1 class="text-center text-xl">
+    <div class="mx-4 rounded-xl border bg-white p-16">
+      <h1 class="text-center text-lg md:text-xl">
         Save Youtube Video in Notion Database
       </h1>
-      <div class="mt-12 flex flex-col">
-        <input v-model="url" type="text" class="mt-12 w-full rounded-md border px-4 py-2 outline-none" placeholder="Paste video URL">
-        <button class="mt-4 w-36 self-center rounded-md bg-pink-600 px-4 py-2 font-medium text-white" @click="handleClick">
+      <form class="mt-12 flex flex-col">
+        <input v-model="url" type="text" class="w-full rounded-md border px-4 py-2 outline-none" placeholder="Paste video URL" required>
+        <button class="mt-4 w-full self-center rounded-md bg-pink-600 px-4 py-2 font-medium text-white transition hover:bg-pink-700" @click="handleClick">
           Save
         </button>
-      </div>
+      </form>
     </div>
   </div>
 </template>
