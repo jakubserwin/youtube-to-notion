@@ -20,8 +20,6 @@
 <script setup lang='ts'>
 import { z, ZodError } from 'zod'
 
-const config = useRuntimeConfig()
-
 const url = ref('')
 const error = ref('')
 
@@ -31,7 +29,7 @@ const handleClick = (): void => {
   try {
     schema.parse(url.value)
 
-    useFetch(config.public.API_BASE_URL, {
+    useFetch('/api/create-page', {
       method: 'POST',
       body: {
         url: url.value

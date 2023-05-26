@@ -21,6 +21,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.5",
     "zod": "^3.21.4"
   }
 }

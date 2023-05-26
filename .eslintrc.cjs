@@ -9,7 +9,6 @@ module.exports = {
     'plugin:tailwindcss/recommended'
   ],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': ['error'],
     'vue/html-self-closing': [0]
   }
 }
