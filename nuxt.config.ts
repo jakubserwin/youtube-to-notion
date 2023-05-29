@@ -5,9 +5,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     NOTION_INTEGRATION_TOKEN: '',
     NOTION_DATABASE_ID: '',
-    YOUTUBE_API_KEY: '',
-    public: {
-      API_BASE_URL: ''
+    YOUTUBE_API_KEY: ''
+  },
+  app: {
+    head: {
+      title: 'youtube-to-notion'
     }
   }
 })
